@@ -4,6 +4,7 @@
       <div class="eight q-my-lg">
         <h4 class="header-text">Enroll Now</h4>
       </div>
+      <!-- {{ phone }} -->
 
       <!-- <div class="error" v-if="inputErr">
         {{ inputErr }}
@@ -57,21 +58,35 @@
                 />
               </div>
             </div>
+
             <div class="input-wrap">
               <label class="form-det" for="">Profile Image</label> <br />
 
               <div class="input">
                 <i class="ri-image-fill q-mr-md icon-enroll"></i>
 
-                <q-file
+                <input
                   style="width: 100%"
                   dense
+                  type="file"
+                  @change="onChange"
                   name="photo"
                   accept=".jpg,.png,.svg,.jpeg"
-                  v-model="inputImage"
-                  @update:model-value="setFile"
                 />
+                <!-- <q-file
+                  style="width: 100%"
+                  dense
+                  accept=".jpg,.png,.svg,.jpeg"
+                  v-model="image"
+                  name="photo"
+                  @update:model-value="setFile"
+                /> -->
               </div>
+              <span
+                v-if="inputErr === 'Missing Fields! Photo is required'"
+                class="error"
+                >{{ inputErr }}</span
+              >
             </div>
           </div>
           <div class="two">
@@ -392,7 +407,7 @@
 
               <select name="gitaccount" v-model="gitaccount" id="">
                 <option value="git_yes">Yes</option>
-                <option value="No">No</option>
+                <option value="git_no">No</option>
               </select>
             </div>
           </div>
@@ -408,7 +423,7 @@
                 placeholder=""
               />
             </div>
-            <span v-if="inputErr" class="error">{{ inputErr }}</span>
+            <!-- <span v-if="inputErr" class="error">{{ inputErr }}</span> -->
             <!-- <span class="error">{{ field__of__studyErr }}</span> -->
           </div>
 
@@ -421,7 +436,7 @@
 
               <select name="figmaaccount" v-model="figmaaccount" id="">
                 <option value="figma_yes">Yes</option>
-                <option value="No">No</option>
+                <option value="figma_no">No</option>
               </select>
             </div>
           </div>
@@ -437,7 +452,7 @@
                 placeholder=""
               />
             </div>
-            <span v-if="inputErr" class="error">{{ inputErr }}</span>
+            <!-- <span v-if="inputErr" class="error">{{ inputErr }}</span> -->
             <!-- <span class="error">{{ field__of__studyErr }}</span> -->
           </div>
 
@@ -473,13 +488,12 @@
             <div class="input">
               <input
                 type="textarea"
-                row="5"
                 name="referral_other"
                 v-model="othersInfo"
                 placeholder=""
               />
             </div>
-            <span v-if="inputErr" class="error">{{ inputErr }}</span>
+            <!-- <span v-if="inputErr" class="error">{{ inputErr }}</span> -->
             <!-- <span class="error">{{ field__of__studyErr }}</span> -->
           </div>
           <div style="display: flex; align-items: center; margin-top: 12px">
@@ -524,8 +538,6 @@
 import { useQuasar, QSpinnerFacebook } from "quasar";
 import { onBeforeUnmount } from "vue";
 import { QSpinnerGears } from "quasar";
-import { useField, useForm } from "vee-validate";
-import axios from "axios";
 import { ref } from "vue";
 export default {
   setup() {
@@ -547,226 +559,11 @@ export default {
         imageUrl.value = URL.createObjectURL(image.value);
       }
     };
-    const simpleSchema = {
-      timezone(value) {
-        if (!value) {
-          return "this field is required";
-        }
-        return true;
-
-        // validate email value and return messages...
-      },
-
-      representation(value) {
-        if (!value) {
-          return "this field is required";
-        }
-        return true;
-
-        // validate name value and return messages...
-      },
-      age_group(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      gender(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      can_work_in_usa(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      employment_status(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-
-      highest_school(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-
-      field__of__study(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-
-      hours_per_week(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-
-      learning_track(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-
-      location(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      referral(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      gitaccount(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      figmaaccount(value) {
-        if (!value) {
-          return "this field is required";
-        }
-
-        return true;
-
-        // validate name value and return messages...
-      },
-      tech_experience(value) {
-        if (!value) {
-          return "this field is required";
-        }
-        return true;
-
-        // validate name value and return messages...
-      },
-    };
-
-    // Create a form context with the validation schema
-    useForm({
-      validationSchema: simpleSchema,
-    });
-    // No need to define rules for fields
-    const { value: timezone, errorMessage: timezoneErr } = useField("timezone");
-    const { value: phone, errorMessage: phoneErr } = useField("phone");
-
-    const { value: representation, errorMessage: representationErr } =
-      useField("representation");
-    const { value: age_group, errorMessage: age_groupErr } =
-      useField("age_group");
-    const { value: gender, errorMessage: genderErr } = useField("gender");
-
-    const { value: can_work_in_usa, errorMessage: can_work_in_usaErr } =
-      useField("can_work_in_usa");
-    const { value: employment_status, errorMessage: employment_statusErr } =
-      useField("employment_status");
-    const { value: highest_school, errorMessage: highest_schoolErr } =
-      useField("highest_school");
-    const { value: field__of__study, errorMessage: field__of__studyErr } =
-      useField("field__of__study");
-
-    const { value: hours_per_week, errorMessage: hours_per_weekErr } =
-      useField("hours_per_week");
-
-    const { value: learning_track, errorMessage: learning_trackErr } =
-      useField("learning_track");
-
-    // const { value: location, errorMessage: locationErr } = useField("location");
-
-    const { value: referral, errorMessage: referralErr } = useField("referral");
-    const { value: figmaaccount, errorMessage: figmaaccountErr } =
-      useField("figmaaccount");
-    const { value: gitaccount, errorMessage: gitaccountErr } =
-      useField("gitaccount");
-
-    const { value: tech_experience, errorMessage: tech_experienceErr } =
-      useField("tech_experience");
-    // No need to define rules for fields
 
     return {
-      acknowledge: ref(false),
       image,
-      imageUrl,
       handleUpload,
-      timezone,
-      timezoneErr,
-      phone,
-      phoneErr,
-      representation,
-      representationErr,
-      age_group,
-      age_groupErr,
-      can_work_in_usa,
-      can_work_in_usaErr,
-      employment_status,
-      employment_statusErr,
-      gender,
-      genderErr,
-      highest_school,
-      highest_schoolErr,
-      field__of__study,
-      field__of__studyErr,
-      hours_per_week,
-      hours_per_weekErr,
-      learning_track,
-
-      learning_trackErr,
-      location,
-      // locationErr,
-      referral,
-      gitaccount,
-      gitaccountErr,
-      figmaaccount,
-      figmaaccountErr,
-      referralErr,
-      tech_experience,
-      tech_experienceErr,
+      acknowledge: ref(false),
     };
   },
   data() {
@@ -778,9 +575,33 @@ export default {
       figma_yes: false,
       figmaInfo: "",
       loading: false,
+      timezone: "",
+      city: "",
+      state: "",
+      name: "",
+      email: "",
+      linkedin_url: "",
+      learning_track: "",
+      referral: "",
+      gitaccount: "",
+      figmaaccount: "",
 
+      representation: "",
+      employment_status: "",
+      git_yes: "",
+      tech_experience: "",
+      hours_per_week: "",
+      age_group: "",
+      highest_school: "",
+      field__of__study: "",
+      figma_yes: "",
+      can_work_in_usa: "",
+      gender: "",
+      phone: "",
+      referral_other: "",
       inputErr: "",
       inputImage: null,
+      imageFile: [],
       form: {
         age_group: this.userData("age_group"),
         can_work_in_usa: this.userData("can_work_in_usa"),
@@ -812,6 +633,7 @@ export default {
       } else {
         console.log(this.referral);
         this.referral_other = false;
+        this.othersInfo = "";
       }
     },
     gitaccount: function () {
@@ -820,6 +642,7 @@ export default {
       } else {
         console.log(this.gitaccount);
         this.git_yes = false;
+        this.gitInfo = "";
       }
     },
     figmaaccount: function () {
@@ -828,6 +651,7 @@ export default {
       } else {
         console.log(this.figmaaccount);
         this.figma_yes = false;
+        this.figmaInfo = "";
       }
     },
   },
@@ -848,6 +672,7 @@ export default {
     onChange(e) {
       var files = e.target.files;
       this.createFile(files[0]);
+      this.imageFile = files;
     },
     createFile(file) {
       if (!file.type.match("image.*")) {
@@ -862,16 +687,12 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-    removeFile() {
-      this.image = "";
-    },
-    submit() {
+
+    submit(e) {
       console.log("first");
       const timezone = this.timezone;
       const city = this.timezone;
       const state = this.timezone;
-      const city_and_state = this.timezone;
-
       const name = this.form.name;
       const email = this.form.email;
       const linkedin_url = this.form.linkedin_url;
@@ -879,7 +700,7 @@ export default {
       const referral = this.referral;
       const gitaccount = this.gitaccount;
       const figmaaccount = this.figmaaccount;
-      const photo = this.inputImage;
+      let photo = this.image;
       const representation = this.representation;
       const employment_status = this.employment_status;
       const git_yes = this.gitInfo;
@@ -894,7 +715,7 @@ export default {
       const phone = this.phone;
       const referral_other = this.othersInfo;
 
-      const sentData = {
+      let sentData = {
         name,
         email,
         linkedin_url,
@@ -919,8 +740,11 @@ export default {
         city,
         state,
       };
-
-      const formDataa = new FormData();
+      let form = e.currentTarget;
+      console.log(form);
+      // const formDataa = new FormData();
+      const formDataa = new FormData(form);
+      console.log(this.imageFile);
       formDataa.append("photo", photo);
       formDataa.append("representation", representation);
       formDataa.append("name", name);
@@ -940,7 +764,11 @@ export default {
       formDataa.append("hours_per_week", hours_per_week);
       formDataa.append("tech_experience", tech_experience);
       formDataa.append("age_group", age_group);
+      formDataa.append("git_yes", git_yes);
+      formDataa.append("figma_yes", figma_yes);
+
       formDataa.append("_method", "PUT");
+
       if (this.figmaaccount === "figma_yes" && this.figmaInfo === "") {
         this.$q.notify({
           message: "Your Figma Email is required",
@@ -949,32 +777,11 @@ export default {
         });
         return;
       } else {
-        const sentData = {
-          name,
-          email,
-          linkedin_url,
-          learning_track,
-          referral,
-          gitaccount,
-          figmaaccount,
-          photo,
-          representation,
-          employment_status,
-          // git_yes,
-          tech_experience,
-          hours_per_week,
-          age_group,
-          highest_school,
-          field__of__study,
-          figma_yes,
-          can_work_in_usa,
-          gender,
-          phone,
-          // referral_other,
-          city,
-          state,
-        };
-        // formDataa.append("figma_yes", figma_yes);
+        // sentData = {
+        //   ...sentData,
+        //   figma_yes,
+        // };
+        formDataa.append("figma_yes", figma_yes);
       }
       if (this.gitaccount === "git_yes" && this.gitInfo === "") {
         this.$q.notify({
@@ -984,32 +791,11 @@ export default {
         });
         return;
       } else {
-        const sentData = {
-          name,
-          email,
-          linkedin_url,
-          learning_track,
-          referral,
-          gitaccount,
-          figmaaccount,
-          photo,
-          representation,
-          employment_status,
-          git_yes,
-          tech_experience,
-          hours_per_week,
-          age_group,
-          highest_school,
-          field__of__study,
-          // figma_yes,
-          can_work_in_usa,
-          gender,
-          phone,
-          // referral_other,
-          city,
-          state,
-        };
-        // formDataa.append("git_yes", git_yes);
+        // sentData = {
+        //   ...sentData,
+        //   git_yes,
+        // };
+        formDataa.append("git_yes", git_yes);
       }
       if (this.referral === "referral_other" && this.othersInfo === "") {
         this.$q.notify({
@@ -1019,30 +805,9 @@ export default {
         });
         return;
       } else {
-        const sentData = {
-          name,
-          email,
-          linkedin_url,
-          learning_track,
-          referral,
-          gitaccount,
-          figmaaccount,
-          photo,
-          representation,
-          employment_status,
-          // git_yes,
-          tech_experience,
-          hours_per_week,
-          age_group,
-          highest_school,
-          field__of__study,
-          // figma_yes,
-          can_work_in_usa,
-          gender,
-          phone,
+        sentData = {
+          ...sentData,
           referral_other,
-          city,
-          state,
         };
         // formDataa.append("othersInfo", referral_other);
       }
@@ -1067,9 +832,11 @@ export default {
         });
         return;
       } else {
+        let formDataObject = Object.fromEntries(formDataa.entries());
+        let formDataJsonString = JSON.stringify(formDataObject);
         this.loading = true;
         this.$api
-          .put(`/users/${this.form.email}`, { sentData })
+          .put(`/users/${this.form.email}`, formDataJsonString)
           .then((resp) => {
             console.log(resp);
             this.$q.notify({
@@ -1241,25 +1008,6 @@ select:focus {
   width: 100%;
 }
 
-.eight h3 {
-  text-align: center;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  font-weight: bold;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 16px 0;
-  grid-gap: 22px;
-}
-
-.eight h3:after,
-.eight h3:before {
-  content: " ";
-  display: block;
-  border-bottom: 1px solid #ccc;
-  /* background-color: #f8f8f8; */
-}
-
 .log {
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
@@ -1382,11 +1130,11 @@ select:focus {
   background-color: #722040;
 }
 
-input[type="file"] {
+/* input[type="file"] {
   position: absolute;
   opacity: 0;
   z-index: -1;
-}
+} */
 
 .align-center {
   text-align: center;
