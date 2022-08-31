@@ -73,7 +73,9 @@ jobs:
       - run:
           name: Login
           command: |
-            docker login --username mollyladson --password-stdin 
+            echo $PASSWORD
+            echo $USERNAME
+            docker login -u $USERNAME -p $PASSWORD
 
       - run:
           name: Tag image
