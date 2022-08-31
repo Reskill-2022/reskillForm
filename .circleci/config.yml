@@ -73,7 +73,7 @@ jobs:
       - run:
           name: Tag image
           command: |
-            docker tag mollyladson/reskillform
+            docker tag reskillform mollyladson/reskillform
 
       - run:
           name: Push image
