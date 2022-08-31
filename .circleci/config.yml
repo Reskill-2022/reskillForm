@@ -64,16 +64,21 @@ jobs:
           name: Build image
           command: |
             docker build -t reskillform .
+      
+      # - run:
+      #     name: Run image
+      #     command: |
+      #       docker run -d -it -p  8080:8080 --name reskillform reskillform-image
 
 #       - run:
 #           name: Tag image
 #           command: |
 #             docker tag devops:latest public.ecr.aws/l3u0n7j8/devops:latest
 
-#       - run:
-#           name: Push image
-#           command: |
-#             docker push public.ecr.aws/l3u0n7j8/devops:latest
+      - run:
+          name: Push image
+          command: |
+            docker push mollyladson/reskillform
 
 workflows:
   default:
