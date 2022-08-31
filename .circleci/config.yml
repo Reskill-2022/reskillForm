@@ -73,8 +73,7 @@ jobs:
       - run:
           name: Login
           command: |
-            docker login
-
+            docker login -u mollyladson
 
       - run:
           name: Tag image
