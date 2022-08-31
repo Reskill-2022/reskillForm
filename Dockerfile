@@ -1,14 +1,15 @@
-FROM node:lts-alpine 
+FROM node:lts-alpine as builder
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install
-
 COPY . .
 
-EXPOSE 9099 5001 8080 5000
+RUN npm install && \
+    npm i -g @quasar/cli && \
+    npm i -g serve
 
-CMD ["quasar", "build"]
+RUN quasar build
 
+EXPOSE 8080
+
+CMD ["serve", "-s", "-l", "8080", "dist/spa"]
