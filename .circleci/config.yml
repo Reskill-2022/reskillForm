@@ -65,10 +65,10 @@ jobs:
           command: |
             docker build -t reskillform .
       
-      # - run:
-      #     name: Run image
-      #     command: |
-      #       docker run -d -it -p  8080:8080 --name reskillform reskillform-image
+      - run:
+          name: Run image
+          command: |
+            docker run -d -it -p  8080:8080 --name reskillform mollyladson/reskillform
 
       - run:
           name: Login
