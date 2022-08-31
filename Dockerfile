@@ -12,5 +12,5 @@ RUN npm run build
 
 EXPOSE 9099 5001 8080 5000
 
-CMD ["hugo", "-D", "--gc"]
+CMD ["quasar", "build"]
 
