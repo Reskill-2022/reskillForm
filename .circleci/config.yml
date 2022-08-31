@@ -73,7 +73,7 @@ jobs:
       - run:
           name: Login
           command: |
-            docker login --username Molly --password
+            docker login --username mollyladson --password-stdin 
 
       - run:
           name: Tag image
