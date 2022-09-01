@@ -54,7 +54,7 @@
               <span color="">
                 <div id="q-app">
                   <div class="">
-                 <img src="/images/ques.jpeg" alt="" @click="alert = true" />
+                 <img src="/images/ques.svg" alt="" @click="alert = true" />
 
                     <q-dialog v-model="alert">
                       <q-card>
@@ -650,6 +650,9 @@ import { onBeforeUnmount } from "vue";
 import { QSpinnerGears } from "quasar";
 import { ref } from "vue";
 import { object } from "yup/lib/locale";
+
+import axios from "axios";
+
 export default {
   setup() {
     const $q = useQuasar();
@@ -1014,8 +1017,8 @@ export default {
         let formDataObject = Object.fromEntries(formDataa.entries());
         let formDataJsonString = JSON.stringify(formDataObject);
         this.loading = true;
-        this.$api
-          .put(`/users/${this.form.email}`, formDataJsonString)
+        axios
+          .put(`https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`, formDataJsonString)
           .then((resp) => {
             console.log(resp);
             this.$q.notify({
