@@ -5,6 +5,8 @@
         <h4 class="header-text">Enroll Now</h4>
       </div>
       <!-- {{ phone }} -->
+      <!-- {{ inputs }} -->
+      {{ inpu }}
 
       <!-- <div class="error" v-if="inputErr">
         {{ inputErr }}
@@ -43,32 +45,76 @@
             </div>
           </div>
 
-            <div class="input-wrap">
-              <label class="form-det" for="">Linkedin Profile URL <q-btn color="grey">
-      <img src="../assets/question.svg" alt="">
-        <q-tooltip class="bg-indigo" :offset="[10, 10]">
-         <b> Step 1:</b> Login to your LinkedIn account on <br> your desktop application <br />
-        <b>Step 2</b>: Navigate to your profile <br>
-        <b>Step 3</b>: Copy the url to your profile from the header <br>
-        hint: https://www.linkedin.com/in/your-other-linkedin-profile details/
-        </q-tooltip>
-      </q-btn></label>  <br />
+          <div class="input-wrap">
+            <label
+              class="form-det"
+              for=""
+              style="display: flex; flex-direction: role"
+              >Linkedin Profile URL
+              <span color="">
+                <div id="q-app">
+                  <div class="">
+                    <q-btn
+                      label="Info"
+                      color="primary"
+                      @click="alert = true"
+                    ></q-btn>
 
-              <div class="input">
-                <i class="ri-shield-user-fill q-mr-md icon-enroll"></i>
+                    <q-dialog v-model="alert">
+                      <q-card>
+                        <q-card-section class="q-pt-none">
+                          <b> Step 1:</b> Login to your LinkedIn account on
+                          <br />
+                          your desktop application <br />
+                          <b>Step 2</b>: Navigate to your profile <br />
+                          <b>Step 3</b>: Copy the url to your profile from the
+                          header <br />
+                          hint:
+                          https://www.linkedin.com/in/your-other-linkedin-profile
+                          details/
+                        </q-card-section>
+                      </q-card>
+                    </q-dialog>
+                  </div>
+                </div>
+              </span></label
+            >
+            <br />
 
-                <input
-                  type="text"
-                  name="linkedin_url"
-                  id="te"
-                  v-model="linkedin_url"
-                />
-              </div>
+            <div class="input">
+              <i class="ri-shield-user-fill q-mr-md icon-enroll"></i>
+
+              <input
+                type="text"
+                name="linkedin_url"
+                id="te"
+                v-model="linkedin_url"
+              />
+            </div>
+          </div>
+          <div class="input-wrap">
+            <label class="form-det" for=""
+              >Are you authorized to legally work in the U.S.?
+            </label>
+            <br />
+            <div class="input">
+              <i class="ri-flag-fill q-mr-md icon-enroll"></i>
+
+              <select name="can_work_in_usa" v-model="can_work_in_usa" id="">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
             </div>
 
-
-
-
+            <span
+              v-if="
+                inputErr ===
+                'Missing Fields! Please choose if you can work in USA'
+              "
+              class="error"
+              >{{ inputErr }}</span
+            >
+          </div>
           <div class="two">
             <div class="input-wrap">
               <label class="form-det" for=""
@@ -81,7 +127,7 @@
 
                 <input
                   type="text"
-                  name="timezone"
+                  name="city"
                   v-model="timezone"
                   placeholder=""
                 />
@@ -124,10 +170,15 @@
                 <i class="ri-apps-fill q-mr-md icon-enroll"></i>
 
                 <select name="representation" v-model="representation" id="">
-                  <option value="native american">American Indian or Alaskan Native</option>
+                  <option value="native american">
+                    American Indian or Alaskan Native
+                  </option>
 
                   <option value="black">Black (not of Hispanic origin)</option>
-                  <option value="hispanic"> Hispanic (Including persons of Mexican, Puerto RIcan, Cuban, and Central or South American origin</option>
+                  <option value="hispanic">
+                    Hispanic (Including persons of Mexican, Puerto RIcan, Cuban,
+                    and Central or South American origin
+                  </option>
                   <option value="pacific islander">Pacific Islander</option>
                   <option value="other">Other</option>
                 </select>
@@ -265,30 +316,6 @@
 
           <div class="input-wrap">
             <label class="form-det" for=""
-              >Are you authorized to legally work in the U.S.?
-            </label>
-            <br />
-            <div class="input">
-              <i class="ri-flag-fill q-mr-md icon-enroll"></i>
-
-              <select name="can_work_in_usa" v-model="can_work_in_usa" id="">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
-            <span
-              v-if="
-                inputErr ===
-                'Missing Fields! Please choose if you can work in USA'
-              "
-              class="error"
-              >{{ inputErr }}</span
-            >
-          </div>
-
-          <div class="input-wrap">
-            <label class="form-det" for=""
               >Which learning track are you considering?
             </label>
             <br />
@@ -300,9 +327,7 @@
                 <option value="Full-Stack Web Development">
                   Full-Stack Web Development
                 </option>
-                <option value="UI/UX Product Design">
-                  UI/UX Product Design
-                </option>
+                <option value="UI/UX Design">UI/UX Design</option>
                 <option value=" I haven't decided yet">
                   I haven't decided yet
                 </option>
@@ -318,8 +343,8 @@
           </div>
           <div class="input-wrap">
             <label class="form-det" for=""
-              >How would you categorize your level of software development prior
-              to enrolling in this program?
+              >How would you categorize your level of software development
+              knowledge prior to enrolling in this program?
             </label>
             <br />
 
@@ -331,19 +356,20 @@
                   I knew nothing about software development.
                 </option>
                 <option
-                  value="I knew basic software development/design principles. "
-                >
-                I knew basic software development/design principles.
-                </option>
-                <option
                   value="I had a little knowledge from watching YouTube and coding challenges, but wanted to get formal training. "
                 >
-                I had a little knowledge from watching YouTube and coding challenges, but wanted to get formal training.
+                  I had a little knowledge from watching YouTube and coding
+                  challenges, but wanted to get formal training.
                 </option>
+                <option
+                  value="I knew basic software development/design principles. "
+                >
+                  I knew basic software development/design principles.
+                </option>
+
                 <option value="I am proficient, but need a refresher course. ">
                   I am proficient, but need a refresher course.
                 </option>
-                <option value="Others">Other</option>
               </select>
             </div>
             <span
@@ -366,7 +392,6 @@
               />
             </div>
           </div>
-
 
           <div class="">
             <div class="input-wrap">
@@ -401,6 +426,57 @@
                 >{{ inputErr }}</span
               >
             </div>
+
+            <div class="input-wrap">
+              <label class="form-det" for=""
+                >Please list all of the industries in which you have worked, in
+                any capacity: (E.g. Education, Food & Beverage, Construction)
+              </label>
+
+              <!-- <div class="">
+              <textarea
+                type="text"
+                name="industries"
+                v-model="industries"
+                placeholder=""
+              />
+            </div> -->
+              <div class="input q-my-md" v-for="(input, k) in inputs" :key="k">
+                <!-- <q-input
+                v-model="inputs.industries"
+                label="Enter (stacked)"
+                stack-label
+                name="industries"
+                :dense="dense"
+              /> -->
+                <input
+                  type="text"
+                  name="industries"
+                  v-model="input.industries"
+                  placeholder=""
+                />
+                <span class="row no-wrap items-center">
+                  <i
+                    class="fas poss fa-minus-circle"
+                    @click="remove(k)"
+                    v-show="k || (!k && inputs.length > 1)"
+                  ></i>
+                  <i
+                    class="fas pos fa-plus-circle"
+                    style="padding-top: 10px"
+                    @click="add(k)"
+                    v-show="k == inputs.length - 1"
+                    >Add fields</i
+                  >
+                </span>
+                <!-- <button @click="addInput">Submit</button> -->
+              </div>
+              <span
+                v-if="inputErr === 'Missing Fields! Please specify industries'"
+                class="error"
+                >{{ inputErr }}</span
+              >
+            </div>
             <div class="input-wrap">
               <label class="form-det" for=""
                 >Years of professional experience (including non-office
@@ -418,6 +494,7 @@
                 >
                   <option value="5 - 10 years">5 - 10 years</option>
                   <option value="10 - 15 years">10 - 15 years</option>
+                  <option value="16 - 19 years">16 - 19 years</option>
                   <option value="20 - 25 years">20 - 25 years</option>
                   <option value="More than 25 years">More than 25 years</option>
                 </select>
@@ -431,27 +508,6 @@
                 >{{ inputErr }}</span
               >
             </div>
-          </div>
-
-
-          <div class="input-wrap">
-            <label class="form-det" for=""
-              >Please list all of the industries in which you have worked, in any capacity: (E.g. Education, Food & Beverage, Construction)
-            </label>
-
-            <div class="">
-              <textarea
-                type="text"
-                name="industries"
-                v-model="industries"
-                placeholder=""
-              />
-            </div>
-            <span
-              v-if="inputErr === 'Missing Fields! Please specify indusries'"
-              class="error"
-              >{{ inputErr }}</span
-            >
           </div>
           <div class="input-wrap">
             <label class="form-det" for=""
@@ -597,6 +653,7 @@ import { useQuasar, QSpinnerFacebook } from "quasar";
 import { onBeforeUnmount } from "vue";
 import { QSpinnerGears } from "quasar";
 import { ref } from "vue";
+import { object } from "yup/lib/locale";
 export default {
   setup() {
     const $q = useQuasar();
@@ -619,15 +676,25 @@ export default {
     };
 
     return {
+      alert: ref(false),
+      confirm: ref(false),
+      prompt: ref(false),
       image,
       handleUpload,
       acknowledge: ref(false),
     };
   },
+
   data() {
     return {
       referral_other: false,
+      inputs: [
+        {
+          industries: "",
+        },
+      ],
       othersInfo: "",
+      inputsVmodel: "",
       git_yes: false,
       gitInfo: "",
       figma_yes: false,
@@ -639,7 +706,7 @@ export default {
       state: "",
       name: "",
       email: "",
-      linkedin_url: "",
+
       learning_track: "",
       referral: "",
       gitaccount: "",
@@ -656,6 +723,7 @@ export default {
       can_work_in_usa: "",
       gender: "",
       phone: "",
+      inpu: [],
       referral_other: "",
       professional_experience: "",
 
@@ -680,6 +748,7 @@ export default {
         linkedin_url: this.userData("linkedin_url"),
         location: this.userData("location"),
         name: this.userData("name"),
+        photo: this.userData("photo"),
 
         phone: this.userData("phone"),
         referral: this.userData("referral"),
@@ -728,19 +797,27 @@ export default {
         this.figmaInfo = "";
       }
     },
-
   },
   methods: {
     setFile(prop) {
       this.inputImage = prop;
+    },
+    add() {
+      this.inputs.push({
+        industries: "",
+      });
+      console.log(this.inputs);
+    },
+
+    remove(index) {
+      this.inputs.splice(index, 1);
     },
     userData(key) {
       if (localStorage.getItem("userDetails")) {
         return JSON.parse(localStorage.getItem("userDetails"))[key];
       } else {
         this.$q.notify({
-          message:
-            "You need to enter your email to register or complete your registration",
+          message: "You need to Login to complete your registration",
           color: "primary",
           position: "top",
         });
@@ -781,12 +858,12 @@ export default {
       const state = this.timezone;
       const name = this.form.name;
       const email = this.form.email;
-      const linkedin_url = this.form.linkedin_url;
+      const linkedin_url = this.linkedin_url;
       const learning_track = this.learning_track;
       const referral = this.referral;
       const gitaccount = this.gitaccount;
       const figmaaccount = this.figmaaccount;
-      let photo = this.image;
+      let photo = this.form.photo;
       const representation = this.representation;
       const employment_status = this.employment_status;
       const git_yes = this.gitInfo;
@@ -802,16 +879,21 @@ export default {
       const referral_other = this.othersInfo;
       const professional_experience = this.professional_experience;
 
-      const industries = this.industries;
+      this.inputs.map((item) => {
+        let keys = Object.values(item);
+        console.log(keys);
+        this.inpu.push(keys.toString());
+      });
+      // const industries = JSON.stringify(this.inputs);
+      const industries = this.inpu;
 
       const prior_knowledge = this.prior_knowledge;
       const prior_knowledge_other_info = this.prior_knowledge_other_info;
 
-
       let sentData = {
-        name,
-        email,
-        linkedin_url,
+        // name,
+        // email,
+
         learning_track,
         referral,
         gitaccount,
@@ -847,7 +929,7 @@ export default {
       formDataa.append("gitaccount", gitaccount);
       formDataa.append("employment_status", employment_status);
       formDataa.append("linkedin_url", linkedin_url);
-      formDataa.append("timezone", timezone);
+      formDataa.append("city", timezone);
       formDataa.append("email", email);
       formDataa.append("referral", referral);
       formDataa.append("learning_track", learning_track);
@@ -863,8 +945,6 @@ export default {
 
       formDataa.append("industries", industries);
       formDataa.append("prior_knowledge", prior_knowledge);
-
-      formDataa.append("linkedin_url", linkedin_url);
 
       formDataa.append("_method", "PUT");
 
@@ -1029,13 +1109,13 @@ input::placeholder {
   gap: 2rem;
   align-items: center;
 }
-.checkbos{
+.checkbos {
   -ms-transform: scale(1.5); /* IE */
   -moz-transform: scale(1.5); /* FF */
   -webkit-transform: scale(1.5); /* Safari and Chrome */
   -o-transform: scale(1.5); /* Opera */
-transform: scale(1.5);
-margin-right: 17px;
+  transform: scale(1.5);
+  margin-right: 17px;
 }
 .form-det {
   font-family: "Open Sans";
@@ -1046,6 +1126,7 @@ margin-right: 17px;
   /* identical to box height, or 170% */
   margin-top: 15px;
   align-items: center;
+  /* display: flex; */
   letter-spacing: 0.3px;
   color: #000;
 }
@@ -1062,6 +1143,11 @@ margin-right: 17px;
 }
 .input-wrap {
   margin: 2rem 0;
+  position: relative;
+}
+
+.input-wrap img {
+  width: 20px;
 }
 .input-wrap,
 select {
@@ -1086,6 +1172,26 @@ select {
   display: flex;
   align-items: center;
   height: 50px;
+  position: relative;
+}
+
+.poss {
+  color: #000;
+  font-size: 13px;
+  text-transform: capitalize;
+  color: #f2594b;
+}
+
+.pos {
+  position: absolute;
+  bottom: -55%;
+  left: 90%;
+  color: #000;
+  top: 92%;
+  font-size: 13px;
+  width: fit-content;
+  text-transform: capitalize !important;
+  color: #f2594b;
 }
 textarea {
   padding: 0.75rem;
@@ -1347,5 +1453,17 @@ textarea:focus {
     border-radius: 8px;
     font-size: 12px;
   }
+  .pos {
+    color: #f2594b;
+    bottom: 0;
+    font-size: 10px;
+    left: 70%;
+    width: fit-content;
+    top: 90% !important;
+  }
+  .input-wrap {
+    margin: 3rem 0;
+  }
 }
 </style>
+// app.use(Quasar, { config: {} }) // app.mount('#q-app')
