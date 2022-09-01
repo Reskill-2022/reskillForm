@@ -3,7 +3,7 @@
   <div class="wrapper container">
 <div class="">
     <div class="eight q-my-lg">
-      <h4 class="header-text">Enrollment Form</h4>
+      <h4 class="header-text">Enrollment Details</h4>
     </div>
     <!-- End of This div needs to be changed -->
     <div class="group">
@@ -12,7 +12,7 @@
           <p class="text-dark text-enroll">
           Welcome!
             <br /><br/>
-            Reskill Americans is currently accepting enrollment for our 7-month software development training session in 2022. Please note, in order to be considered for enrollment for our upcoming session, you must meet the three minimum requirements listed below, and you must complete and submit the requested information in this enrollment application.
+           Reskill Americans is currently accepting enrollment for our 7-month software development training session which starts on October 3, 2022. Please note, in order to be considered for enrollment for our upcoming session, you must meet the three minimum requirements listed below, and you must complete and submit the requested information in this enrollment application.
 
 
             <br>
