@@ -112,7 +112,7 @@ export default {
                   code, redirect_uri
                 }
 
-                this.$api.post("https://linkedin-signin-prototype.herokuapp.com/api/users",loginData).then((resp)=>{
+                this.$api.post("https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",loginData).then((resp)=>{
                   if(resp.status === 201){
                     localStorage.setItem(
                       "userDetails",
@@ -185,7 +185,7 @@ export default {
 
       await axios
         .post(
-          "https://linkedin-signin-prototype.herokuapp.com/api/users",
+          "https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",
           this.form
         )
         .then((resp) => {
@@ -222,7 +222,7 @@ export default {
 
           }
           console.log(response);
-          axios.get(`https://linkedin-signin-prototype.herokuapp.com/api/users/${this.form.email}`).then((resp)=>{
+          axios.get(`https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`).then((resp)=>{
             let enrolled = resp.data.payload.enrolled
             let name = resp.data.payload.name
            if (response.data.error === "User Account Already Exists" && enrolled === false) {

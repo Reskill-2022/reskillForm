@@ -64,7 +64,7 @@ export default {
     async submit() {
       await axios
         .post(
-          "https://linkedin-signin-prototype.herokuapp.com/api/users",
+          "https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",
           this.form
         )
         .then((response) => {

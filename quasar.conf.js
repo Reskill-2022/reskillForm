@@ -45,8 +45,8 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       env: {
-        baseURL: JSON.stringify(process.env.BASE_URL),
-        rootURL: JSON.stringify(process.env.BASE_URL),
+        baseURL: 'https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api',
+        rootURL: 'https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api',
         site_name: 'Reskill',
         description: 'Reskill',
         keywords: 'Reskill Americans',
