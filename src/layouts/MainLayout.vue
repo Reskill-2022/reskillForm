@@ -358,7 +358,7 @@ font-weight: 400;
 font-size: 24px;
 line-height: 130%;
 /* or 31px */
-width: 380px;
+width: 330px;
 display: flex;
 align-items: center;
 
