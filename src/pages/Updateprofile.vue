@@ -6,7 +6,7 @@
       </div>
       <!-- {{ phone }} -->
       <!-- {{ inputs }} -->
-    
+
 
       <!-- <div class="error" v-if="inputErr">
         {{ inputErr }}
@@ -348,19 +348,19 @@
               <i class="ri-inbox-fill q-mr-md icon-enroll"></i>
 
               <select name="prior_knowledge" v-model="prior_knowledge" id="">
-                <option value="I knew nothing about software development. ">
-                  I knew nothing about software development.
+                <option value="I know nothing about software development. ">
+                  I know nothing about software development.
                 </option>
                 <option
-                  value="I had a little knowledge from watching YouTube and coding challenges, but wanted to get formal training. "
+                  value="I have a little knowledge from watching YouTube and coding challenges, but want to get formal training. "
                 >
-                  I had a little knowledge from watching YouTube and coding
-                  challenges, but wanted to get formal training.
+                  I have a little knowledge from watching YouTube and coding
+                  challenges, but want to get formal training.
                 </option>
                 <option
-                  value="I knew basic software development/design principles. "
+                  value="I know basic software development/design principles. "
                 >
-                  I knew basic software development/design principles.
+                  I know basic software development/design principles.
                 </option>
 
                 <option value="I am proficient, but need a refresher course. ">
