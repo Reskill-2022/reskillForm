@@ -1115,6 +1115,7 @@ input::placeholder {
   -o-transform: scale(1.5); /* Opera */
   transform: scale(1.5);
   margin-right: 17px;
+  min-width: 20px;
 }
 .form-det {
   font-family: "Open Sans";
