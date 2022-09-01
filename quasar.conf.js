@@ -45,8 +45,8 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       env: {
-        baseURL: 'https://linkedin-signin-prototype.herokuapp.com/api',
-        rootURL: 'https://linkedin-signin-prototype.herokuapp.com/api',
+        baseURL: JSON.stringify(process.env.BASE_URL),
+        rootURL: JSON.stringify(process.env.BASE_URL),
         site_name: 'Reskill',
         description: 'Reskill',
         keywords: 'Reskill Americans',
