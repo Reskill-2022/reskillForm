@@ -54,7 +54,7 @@
               <span color="">
                 <div id="q-app">
                   <div class="">
-                 <img src="/images/ques.svg" alt="" @click="alert = true" />
+                 <img src="/images/ques.jpeg"  alt="" @click="alert = true" />
 
                     <q-dialog v-model="alert">
                       <q-card>
@@ -1146,7 +1146,7 @@ input::placeholder {
 }
 
 .input-wrap img {
-  width: 20px;
+  width: 27px;
   padding-left:10px;
 }
 .input-wrap,
