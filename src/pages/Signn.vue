@@ -10,29 +10,29 @@
       <div class="left">
         <div class=" q-mb-lg">
           <p class="text-dark text-enroll">
-       Welcome!
- <br /><br/>
-Reskill Americans is currently accepting enrollment for our 7-month software development training session in 2022. Please note, in order to be considered for enrollment for our upcoming session, you must meet the three minimum requirements listed below, and you must complete and submit the requested information in this enrollment application.
+          Welcome!
+            <br /><br/>
+            Reskill Americans is currently accepting enrollment for our 7-month software development training session in 2022. Please note, in order to be considered for enrollment for our upcoming session, you must meet the three minimum requirements listed below, and you must complete and submit the requested information in this enrollment application.
 
 
-<br>
-<br>
+            <br>
+            <br>
 
           <ul>
           <li class="q-my-xs icons"> <div class="icon-box"><img  style="margin-top: 7px;" src="images/radio-button-on.png" width="6px" alt=""> </div> <p class="text-enroll smal">You must self-identify as a historically underrepresented racial minority.</p></li >
           <li class="q-my-xs icons"> <div class="icon-box"><img  style="margin-top: 7px;" src="images/radio-button-on.png" width="6px" alt=""> </div> <p class="text-enroll smal"> You must be authorized to legally work in the United States.</p></li>
           <li class="q-my-xs icons"> <div class="icon-box"><img  style="margin-top: 7px;" src="images/radio-button-on.png" width="6px" alt=""> </div> <p class="text-enroll smal">You must maintain a current and accurate LinkedIn.com profile that includes a recent photo of yourself.
-</p></li>
+          </p></li>
           </ul>
           </p>
-          <p class="text-details2 q-mt-lg">
-      *Please provide the email linked to your Linkedin account</p>
+          <!-- <p class="text-details2 q-mt-lg">
+           *Please provide the email linked to your Linkedin account</p> -->
 
         </div>
-        <form @submit.prevent="submit">
+        <!-- <form @submit.prevent="submit">
           <div class="input-wrap">
 
-<div class=" box-main">
+            <div class=" box-main">
             <div class="input">
               <i class="ri-mail-line q-mr-md mail-icons"></i>
 
@@ -43,11 +43,17 @@ Reskill Americans is currently accepting enrollment for our 7-month software dev
                 placeholder="Email"
               />
             </div>
-   <div class="button ">
+          <div class="button ">
             <q-btn type="submit" :loading='loading' class="btn buttonss">Enroll</q-btn>
           </div>
           </div>
           </div>
+
+
+          
+
+
+          
 
 
 
@@ -56,7 +62,10 @@ Reskill Americans is currently accepting enrollment for our 7-month software dev
           <div class="error" v-if="inputErr">
             {{ inputErr }}
           </div>
-        </form>
+          </form> -->
+          <q-btn :loading='loading' class="btn buttonss" @click="loginWithLinkedin">
+            Login with Linkedin
+          </q-btn>
       </div>
     </div>
 
@@ -84,13 +93,93 @@ export default {
     return {
       inputErr: "",
        enrolled: '',
-loading:false,
+      loading:false,
       form: {
         email: "",
       },
     };
   },
+  created(){
+    localStorage.removeItem("userDetails");
+  },
+
+  mounted(){
+      if(this.$route.query.code){
+          let code = this.$route.query.code
+                let redirect_uri = window.location.origin
+
+                let loginData = {
+                  code, redirect_uri
+                }
+
+                this.$api.post("https://linkedin-signin-prototype.herokuapp.com/api/users",loginData).then((resp)=>{
+                  if(resp.status === 201){
+                    localStorage.setItem(
+                      "userDetails",
+                      JSON.stringify(resp.data.payload)
+                    );
+                    this.$router.replace("/update");
+
+                  }
+                  console.log(resp)
+                }).catch(({response})=>{
+                  console.log(response)
+                  this.$q.notify({
+                    message: response.data.error,
+                    color: "red",
+                    position: "top",
+                  });
+                })
+      
+       }
+
+  },
+ 
   methods: {
+    loginWithLinkedin(){
+      this.loading = true
+      // if(!this.$route.query.code){
+      //   location.href = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86p7qxbuxiqvqo&redirect_uri=http://localhost:8085&scope=r_emailaddress,r_liteprofile'
+      // }else{
+      // let code = this.$route.query.code
+      // let redirect_uri = 'http://localhost:8085'
+
+      // let loginData = {
+      //   code, redirect_uri
+      // }
+
+      // this.$api.post("https://linkedin-signin-prototype.herokuapp.com/api/users",loginData).then((resp)=>{
+      //   console.log(resp)
+      // }).catch(({response})=>{
+      //   console.log(response)
+      // })
+      // }
+       if(this.$route.query.code === undefined){
+            location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86p7qxbuxiqvqo&redirect_uri=${window.location.origin}&scope=r_emailaddress,r_liteprofile`
+       }else{
+         this.loading = false
+       }
+
+      //  if(this.$route.query.code){
+      //     let code = this.$route.query.code
+      //           let redirect_uri = window.location.origin
+
+      //           let loginData = {
+      //             code, redirect_uri
+      //           }
+
+      //           this.$api.post("https://linkedin-signin-prototype.herokuapp.com/api/users",loginData).then((resp)=>{
+      //             console.log(resp)
+      //           }).catch(({response})=>{
+      //             console.log(response)
+      //           })
+      
+      //  }
+
+      
+
+      console.log(window.location.origin, this.$route.query.code)
+    },
     async submit() {
           this.loading = true
 
@@ -125,13 +214,11 @@ loading:false,
             setTimeout(() => {
               this.inputErr = "";
             }, 4000);
-            this.$q.notify({
-              message: response.data.error,
-              color: "secondary",
-              position: "bottom",
-            });
-
-
+            // this.$q.notify({
+            //   message: response.data.error,
+            //   color: "secondary",
+            //   position: "bottom",
+            // });
 
           }
           console.log(response);
@@ -374,7 +461,7 @@ select {
 }
 .buttonss{
    height: 73px;
-   width: 160px;
+   width: 260px;
    font-family: 'Open Sans';
 font-style: normal;
 font-weight: 800;
@@ -446,14 +533,8 @@ select:focus {
 .btn {
   border: none;
   background: #f2594b;
-
-
-
-
   color: #fff;
-
   padding: 1rem;
-
 }
 
 .eight h3 {
@@ -572,7 +653,7 @@ align-items: center;
 }
 .buttonss{
    height: 73px;
-   width: 140px;
+   width: 260px;
    font-family: 'Open Sans';
 font-style: normal;
 font-weight: 800;
@@ -670,6 +751,14 @@ width: 220px;
     border-radius: 8px;
     font-size: 12px;
   }
+}
+@media (max-width: 600px) {
+.buttonss{
+   height: 73px;
+   width: 80%;
+   
+
+}
 }
 @media (max-width: 350px) {
   .input-wrap .input {
