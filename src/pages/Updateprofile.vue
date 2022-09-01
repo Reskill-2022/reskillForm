@@ -6,7 +6,7 @@
       </div>
       <!-- {{ phone }} -->
       <!-- {{ inputs }} -->
-      {{ inpu }}
+    
 
       <!-- <div class="error" v-if="inputErr">
         {{ inputErr }}
