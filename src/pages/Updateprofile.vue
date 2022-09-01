@@ -2,7 +2,7 @@
   <div class="box-par">
     <div class="wrapper container q-pt-xl">
       <div class="eight q-my-lg">
-        <h4 class="header-text">Enroll Now</h4>
+        <h4 class="header-text"> Enrollment Form</h4>
       </div>
       <!-- {{ phone }} -->
       <!-- {{ inputs }} -->
@@ -54,7 +54,7 @@
               <span color="">
                 <div id="q-app">
                   <div class="">
-                 <img src="/images/ques.jpeg"  alt="" @click="alert = true" />
+                 <img src="/images/ques.png"  alt="" @click="alert = true" />
 
                     <q-dialog v-model="alert">
                       <q-card>
