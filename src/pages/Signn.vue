@@ -50,10 +50,10 @@
           </div>
 
 
-          
 
 
-          
+
+
 
 
 
@@ -112,7 +112,7 @@ export default {
                   code, redirect_uri
                 }
 
-                this.$api.post("https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",loginData).then((resp)=>{
+                axios.post("https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",loginData).then((resp)=>{
                   if(resp.status === 201){
                     localStorage.setItem(
                       "userDetails",
@@ -130,11 +130,11 @@ export default {
                     position: "top",
                   });
                 })
-      
+
        }
 
   },
- 
+
   methods: {
     loginWithLinkedin(){
       this.loading = true
@@ -173,10 +173,10 @@ export default {
       //           }).catch(({response})=>{
       //             console.log(response)
       //           })
-      
+
       //  }
 
-      
+
 
       console.log(window.location.origin, this.$route.query.code)
     },
@@ -756,7 +756,7 @@ width: 220px;
 .buttonss{
    height: 73px;
    width: 80%;
-   
+
 
 }
 }
