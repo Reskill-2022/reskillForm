@@ -92,25 +92,7 @@
             </div>
           </div>
           <div class="two">
-          <div class="input-wrap">
-              <label class="form-det" for="">Phone Number</label> <br />
-
-              <div class="input">
-                <i class="ri-phone-fill q-mr-md icon-enroll"></i>
-
-                <input
-                  type="number"
-                  name="phone"
-                  v-model="phone"
-                  placeholder=""
-                />
-              </div>
-              <span
-                v-if="inputErr === 'Missing Fields! Phone Number is required'"
-                class="error"
-                >{{ inputErr }}</span
-              >
-            </div>
+          
           <div class="input-wrap">
             <label class="form-det" for=""
               >State of Residence 
@@ -183,8 +165,7 @@
               >{{ inputErr }}</span
             >
           </div>
-          </div>
-          <div class="two">
+          
             <div class="input-wrap">
               <label class="form-det" for=""
                 >City (e.g. California, Illinois)
@@ -203,6 +184,27 @@
               </div>
               <span
                 v-if="inputErr === 'Missing Fields! City required'"
+                class="error"
+                >{{ inputErr }}</span
+              >
+            </div>
+          </div>
+          <div class="two">
+          <div class="input-wrap">
+              <label class="form-det" for="">Phone Number</label> <br />
+
+              <div class="input">
+                <i class="ri-phone-fill q-mr-md icon-enroll"></i>
+
+                <input
+                  type="number"
+                  name="phone"
+                  v-model="phone"
+                  placeholder=""
+                />
+              </div>
+              <span
+                v-if="inputErr === 'Missing Fields! Phone Number is required'"
                 class="error"
                 >{{ inputErr }}</span
               >
