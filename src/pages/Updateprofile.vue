@@ -168,7 +168,7 @@
           
             <div class="input-wrap">
               <label class="form-det" for=""
-                >City (e.g. California, Illinois)
+                >City (e.g. San Francisco, Houston)
               </label>
               <br />
 
@@ -252,7 +252,7 @@
 
                   <option value="black">Black (not of Hispanic origin)</option>
                   <option value="hispanic">
-                    Hispanic (Including persons of Mexican, Puerto RIcan, Cuban,
+                    Hispanic (Including persons of Mexican, Puerto Rican, Cuban,
                     and Central or South American origin
                   </option>
                   <option value="pacific islander">Pacific Islander</option>
