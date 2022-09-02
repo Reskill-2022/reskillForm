@@ -1303,7 +1303,7 @@ select {
   border: none;
   padding: 0.45rem;
   background: transparent;
-  color: #959292;
+  color: #282727;;
   width: 100%;
   cursor: pointer;
 }
