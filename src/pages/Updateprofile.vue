@@ -690,7 +690,7 @@ export default {
   data() {
     return {
     isValid: false,
-      regex: '(http(s?)://|[a-zA-Z0-9\-]+\.|[linkedin])[linkedin/~\-]+\.[a-zA-Z0-9/~\-_,&=\?\.;]+[^\.,\s<]'
+      regex: '(http(s?)://|[a-zA-Z0-9\-]+\.|[linkedin])[linkedin/~\-]+\.[a-zA-Z0-9/~\-_,&=\?\.;]+[^\.,\s<]',
       referral_other: false,
       inputs: [
         {
