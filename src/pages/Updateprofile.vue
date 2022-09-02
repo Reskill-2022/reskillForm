@@ -1121,7 +1121,7 @@ export default {
             });
             this.loading = false;
 
-            this.$router.replace("/");
+            this.$router.replace("/success");
             localStorage.removeItem("userDetails");
           })
           .catch(({ response }) => {
