@@ -84,12 +84,8 @@
                 type="url"
                 name="linkedin_url"
                 id="te"
-              
                 v-model="linkedin_url"
               />
-                
-  </div>
-   
             </div>
           </div>
           <div class="input-wrap">
@@ -696,8 +692,6 @@ export default {
           industries: "",
         },
       ],
-       isValid: false,
-      regex: /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/gm
       othersInfo: "",
       inputsVmodel: "",
       git_yes: false,
@@ -766,15 +760,6 @@ export default {
       },
     };
   },
-  methods: {
-    change:function(e){
-      const url = e.target.value
-      this.isURLValid(url);
-    },
-    isURLValid: function(inputUrl) {
-      this.isValid=   this.regex.test(inputUrl)
-    }
-  }
   watch: {
     referral: function () {
       if (this.referral === "referral_other") {
