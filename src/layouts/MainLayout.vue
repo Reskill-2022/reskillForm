@@ -3,7 +3,7 @@
     <q-header  class="bg-white text-dark flex head-mains" height-hint="98">
       <q-toolbar class="q-pa-lg">
         <q-toolbar-title>
-        <a href="/">
+        <a href="https://reskillamericans.org/">
           <img class="logo" src="/images/logo.png" alt="" /> </a>
         </q-toolbar-title>
 
@@ -27,7 +27,7 @@
             href=" https://reskillamericans.org/news/"
             >News</a>
   <div class="button ">
-            <q-btn href="/" class="btn buttonss">Enroll</q-btn>
+            <q-btn href="https://enrollment.reskillamericans.org/" class="btn buttonss">Enroll</q-btn>
           </div>
 
         </q-tabs>
@@ -91,7 +91,7 @@
           <q-route-tab
             class="q-my-sm text-dark addbor text-weight-bold"
             target="_blank"
-            href="info@reskillamericans.org"
+            href="mailto:info@reskillamericans.org"
             label="Contact Us"
           />
 
@@ -112,7 +112,7 @@
     <q-footer class="bg-white  absolute-bottom text-white">
     <div class="footer-main-box top-foot">
     <div class="foot-box">
-    <a href="/">
+    <a href="https://reskillamericans.org/">
      <img class="logo logs "  src="/images/Logo2.svg" width="250px"  alt="" /> </a>
      <p class="address">Copyright © 2021 Reskill Americans. All rights reserved.</p>
     </div>
@@ -132,7 +132,7 @@
                 <a
                   class="text-white address"
                   target="_blank"
-                  href=" https://reskillamericans.org/learn-more/"
+                  href=" https://reskillamericans.org/about/"
                   >About Us</a
                 >
               </li>
@@ -155,7 +155,7 @@
                 <a
                   class="text-white address"
                   target="_blank"
-                  href="info@reskillamericans.org"
+                  href="mailto:info@reskillamericans.org"
                   >Contact</a
                 >
               </li>
@@ -186,7 +186,7 @@
                 <a
                   class="text-white address"
                   target="_blank"
-                  href="https://reskillamericans.org/faq/"
+                  href="https://reskillamericans.org/donate/"
                   >Donate</a
                 >
               </li>
