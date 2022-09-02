@@ -253,7 +253,7 @@
                   <option value="black">Black (not of Hispanic origin)</option>
                   <option value="hispanic">
                     Hispanic (Including persons of Mexican, Puerto Rican, Cuban,
-                    and Central or South American origin
+                    and Central or South American origin)
                   </option>
                   <option value="pacific islander">Pacific Islander</option>
                   <option value="other">Other</option>
