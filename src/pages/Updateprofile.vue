@@ -81,7 +81,7 @@
               <i class="ri-shield-user-fill q-mr-md icon-enroll"></i>
 
               <input
-                type="text"
+                type="url"
                 name="linkedin_url"
                 id="te"
                 v-model="linkedin_url"
@@ -141,7 +141,7 @@
                 <i class="ri-phone-fill q-mr-md icon-enroll"></i>
 
                 <input
-                  type="text"
+                  type="number"
                   name="phone"
                   v-model="phone"
                   placeholder=""
