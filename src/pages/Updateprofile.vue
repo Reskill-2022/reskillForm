@@ -88,7 +88,7 @@
       @change="change($event)"
                 v-model="linkedin_url"
               />
-               <div class="error" v-if="!isValid">URL is Invalid</div>
+             
             </div>
           </div>
           <div class="input-wrap">
