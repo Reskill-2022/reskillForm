@@ -140,7 +140,7 @@ export default {
 
       let resp = await axios
         .put(
-          `https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`
+          `https://reskill-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`
         )
         .catch((err) => console.log(err));
 

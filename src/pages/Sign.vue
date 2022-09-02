@@ -64,7 +64,7 @@ export default {
     async submit() {
       await axios
         .post(
-          "https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",
+          "https://reskill-zrwye3jkrq-uc.a.run.app/api/users",
           this.form
         )
         .then((response) => {

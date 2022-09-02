@@ -112,7 +112,7 @@ export default {
                   code, redirect_uri
                 }
 
-                axios.post("https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",loginData).then((resp)=>{
+                axios.post("https://reskill-zrwye3jkrq-uc.a.run.app/api/users",loginData).then((resp)=>{
                   if(resp.status === 201){
                     localStorage.setItem(
                       "userDetails",
@@ -185,7 +185,7 @@ export default {
 
       await axios
         .post(
-          "https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users",
+          "https://reskill-zrwye3jkrq-uc.a.run.app/api/users",
           this.form
         )
         .then((resp) => {
@@ -222,7 +222,7 @@ export default {
 
           }
           console.log(response);
-          axios.get(`https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`).then((resp)=>{
+          axios.get(`https://reskill-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`).then((resp)=>{
             let enrolled = resp.data.payload.enrolled
             let name = resp.data.payload.name
            if (response.data.error === "User Account Already Exists" && enrolled === false) {

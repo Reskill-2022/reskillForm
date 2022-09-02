@@ -1111,7 +1111,7 @@ export default {
         let formDataJsonString = JSON.stringify(formDataObject);
         this.loading = true;
         axios
-          .put(`https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`, formDataJsonString)
+          .put(`https://reskill-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`, formDataJsonString)
           .then((resp) => {
             console.log(resp);
             this.$q.notify({
