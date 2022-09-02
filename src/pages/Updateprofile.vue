@@ -177,7 +177,7 @@
             <span
               v-if="
                 inputErr ===
-                ''Missing Fields! State required''
+                'Missing Fields! State required'
               "
               class="error"
               >{{ inputErr }}</span
