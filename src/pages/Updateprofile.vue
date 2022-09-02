@@ -773,7 +773,7 @@ export default {
     isURLValid: function(inputUrl) {
       this.isValid=   this.regex.test(inputUrl)
     }
-  }
+  },
   watch: {
     referral: function () {
       if (this.referral === "referral_other") {
