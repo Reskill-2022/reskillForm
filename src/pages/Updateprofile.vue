@@ -84,12 +84,12 @@
                 type="url"
                 name="linkedin_url"
                 id="te"
-                 @input="change($event)"
-      @change="change($event)"
+              
                 v-model="linkedin_url"
               />
                 
   </div>
+   
             </div>
           </div>
           <div class="input-wrap">
