@@ -2,11 +2,11 @@
   <div class="box-par">
     <div class="wrapper container q-pt-xl">
       <div class="eight q-my-lg">
-        <h4 class="header-text">Enroll Now</h4>
+        <h4 class="header-text"> Enrollment Form</h4>
       </div>
       <!-- {{ phone }} -->
       <!-- {{ inputs }} -->
-    
+
 
       <!-- <div class="error" v-if="inputErr">
         {{ inputErr }}
@@ -54,7 +54,7 @@
               <span color="">
                 <div id="q-app">
                   <div class="">
-                 <img src="/images/ques.jpeg" alt="" @click="alert = true" />
+                 <img src="/images/ques.png"  alt="" @click="alert = true" />
 
                     <q-dialog v-model="alert">
                       <q-card>
@@ -81,7 +81,7 @@
               <i class="ri-shield-user-fill q-mr-md icon-enroll"></i>
 
               <input
-                type="text"
+                type="url"
                 name="linkedin_url"
                 id="te"
                 v-model="linkedin_url"
@@ -141,7 +141,7 @@
                 <i class="ri-phone-fill q-mr-md icon-enroll"></i>
 
                 <input
-                  type="text"
+                  type="number"
                   name="phone"
                   v-model="phone"
                   placeholder=""
@@ -298,8 +298,8 @@
               <i class="ri-book-fill q-mr-md icon-enroll"></i>
               <input
                 type="text"
-                name="field_of_study"
-                v-model="field_of_study"
+                name="field__of__study"
+                v-model="field__of__study"
                 placeholder=""
               />
             </div>
@@ -348,19 +348,19 @@
               <i class="ri-inbox-fill q-mr-md icon-enroll"></i>
 
               <select name="prior_knowledge" v-model="prior_knowledge" id="">
-                <option value="I knew nothing about software development. ">
-                  I knew nothing about software development.
+                <option value="I know nothing about software development. ">
+                  I know nothing about software development.
                 </option>
                 <option
-                  value="I had a little knowledge from watching YouTube and coding challenges, but wanted to get formal training. "
+                  value="I have a little knowledge from watching YouTube and coding challenges, but want to get formal training. "
                 >
-                  I had a little knowledge from watching YouTube and coding
-                  challenges, but wanted to get formal training.
+                  I have a little knowledge from watching YouTube and coding
+                  challenges, but want to get formal training.
                 </option>
                 <option
-                  value="I knew basic software development/design principles. "
+                  value="I know basic software development/design principles. "
                 >
-                  I knew basic software development/design principles.
+                  I know basic software development/design principles.
                 </option>
 
                 <option value="I am proficient, but need a refresher course. ">
@@ -498,7 +498,7 @@
               <span
                 v-if="
                   inputErr ===
-                  'Missing Fields! Please select years of experience'
+                  'Missing Fields! Please choose Hours available Per Week'
                 "
                 class="error"
                 >{{ inputErr }}</span
@@ -650,6 +650,9 @@ import { onBeforeUnmount } from "vue";
 import { QSpinnerGears } from "quasar";
 import { ref } from "vue";
 import { object } from "yup/lib/locale";
+
+import axios from "axios";
+
 export default {
   setup() {
     const $q = useQuasar();
@@ -699,7 +702,7 @@ export default {
       loading: false,
       timezone: "",
       city: "",
-    
+      state: "",
       name: "",
       email: "",
 
@@ -714,7 +717,7 @@ export default {
       hours_per_week: "",
       age_group: "",
       highest_school: "",
-      field_of_study: "",
+      field__of__study: "",
       figma_yes: "",
       can_work_in_usa: "",
       gender: "",
@@ -851,7 +854,7 @@ export default {
       console.log("first");
       const timezone = this.timezone;
       const city = this.timezone;
-     
+      const state = this.timezone;
       const name = this.form.name;
       const email = this.form.email;
       const linkedin_url = this.linkedin_url;
@@ -867,7 +870,7 @@ export default {
       const hours_per_week = this.hours_per_week;
       const age_group = this.age_group;
       const highest_school = this.highest_school;
-      const field_of_study = this.field_of_study;
+      const field__of__study = this.field__of__study;
       const figma_yes = this.figmaInfo;
       const can_work_in_usa = this.can_work_in_usa;
       const gender = this.gender;
@@ -902,14 +905,14 @@ export default {
         hours_per_week,
         age_group,
         highest_school,
-        field_of_study,
+        field__of__study,
         // figma_yes,
         can_work_in_usa,
         gender,
         phone,
         // referral_other,
         city,
-       
+        state,
       };
       let form = e.currentTarget;
       console.log(form);
@@ -931,7 +934,7 @@ export default {
       formDataa.append("learning_track", learning_track);
       formDataa.append("highest_school", highest_school);
       formDataa.append("can_work_in_usa", can_work_in_usa);
-      formDataa.append("field_of_study", field_of_study);
+      formDataa.append("field__of__study", field__of__study);
       formDataa.append("hours_per_week", hours_per_week);
 
       formDataa.append("age_group", age_group);
@@ -1014,8 +1017,8 @@ export default {
         let formDataObject = Object.fromEntries(formDataa.entries());
         let formDataJsonString = JSON.stringify(formDataObject);
         this.loading = true;
-        this.$api
-          .put(`/users/${this.form.email}`, formDataJsonString)
+        axios
+          .put(`https://reskill-backend-staging-zrwye3jkrq-uc.a.run.app/api/users/${this.form.email}`, formDataJsonString)
           .then((resp) => {
             console.log(resp);
             this.$q.notify({
@@ -1112,6 +1115,7 @@ input::placeholder {
   -o-transform: scale(1.5); /* Opera */
   transform: scale(1.5);
   margin-right: 17px;
+  min-width: 20px;
 }
 .form-det {
   font-family: "Open Sans";
@@ -1143,7 +1147,7 @@ input::placeholder {
 }
 
 .input-wrap img {
-  width: 20px;
+  width: 27px;
   padding-left:10px;
 }
 .input-wrap,
