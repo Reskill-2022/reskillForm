@@ -18,7 +18,7 @@
               You will be receiving an email shortly that confirms your enrollment and shares more details. Please be sure to check your spam folder in case it was directed there.
 <br/>
 <br />
-If you don’t receive an email from us within 24 hours, please email us at info@reskillamericans.org.
+If you don’t receive an email from us within 24 hours, please email us at <a href="mailto:info@reskillamericans.org">mailto:info@reskillamericans.org</a>
 <br/>
 <br />
 We look forward to helping you on our journey towards accessing a career in tech!
