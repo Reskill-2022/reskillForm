@@ -84,8 +84,11 @@
                 type="url"
                 name="linkedin_url"
                 id="te"
+                 @input="change($event)"
+      @change="change($event)"
                 v-model="linkedin_url"
               />
+               <div class="error" v-if="!isValid">URL is Invalid</div>
             </div>
           </div>
           <div class="input-wrap">
@@ -686,6 +689,8 @@ export default {
 
   data() {
     return {
+    isValid: false,
+      regex: /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)
       referral_other: false,
       inputs: [
         {
@@ -760,6 +765,15 @@ export default {
       },
     };
   },
+  methods: {
+    change:function(e){
+      const url = e.target.value
+      this.isURLValid(url);
+    },
+    isURLValid: function(inputUrl) {
+      this.isValid=   this.regex.test(inputUrl)
+    }
+  }
   watch: {
     referral: function () {
       if (this.referral === "referral_other") {
