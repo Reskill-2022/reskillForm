@@ -382,8 +382,8 @@
               <i class="ri-book-fill q-mr-md icon-enroll"></i>
               <input
                 type="text"
-                name="field__of__study"
-                v-model="field__of__study"
+                name="field_of_study"
+                v-model="field_of_study"
                 placeholder=""
               />
             </div>
@@ -803,7 +803,7 @@ export default {
       hours_per_week: "",
       age_group: "",
       highest_school: "",
-      field__of__study: "",
+     field_of_study: "",
       figma_yes: "",
       can_work_in_usa: "",
       gender: "",
@@ -966,7 +966,7 @@ export default {
       const hours_per_week = this.hours_per_week;
       const age_group = this.age_group;
       const highest_school = this.highest_school;
-      const field__of__study = this.field__of__study;
+      const field_of_study = this.field_of_study;
       const figma_yes = this.figmaInfo;
       const can_work_in_usa = this.can_work_in_usa;
       const gender = this.gender;
@@ -1001,7 +1001,7 @@ export default {
         hours_per_week,
         age_group,
         highest_school,
-        field__of__study,
+       field_of_study,
         // figma_yes,
         can_work_in_usa,
         gender,
@@ -1031,7 +1031,7 @@ export default {
       formDataa.append("learning_track", learning_track);
       formDataa.append("highest_school", highest_school);
       formDataa.append("can_work_in_usa", can_work_in_usa);
-      formDataa.append("field__of__study", field__of__study);
+      formDataa.append("field_of_study", field_of_study);
       formDataa.append("hours_per_week", hours_per_week);
 
       formDataa.append("age_group", age_group);
