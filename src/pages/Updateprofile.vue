@@ -113,7 +113,7 @@
             </div>
           <div class="input-wrap">
             <label class="form-det" for=""
-              >, State of Residence 
+              >State of Residence 
             </label>
             <br />
             <div class="input">
@@ -208,34 +208,28 @@
               >
             </div>
             <div class="input-wrap">
-              <label class="form-det" for=""
-                >Minority Representation: I identify as</label
-              >
-              <br />
+            <label class="form-det" for=""
+              >Are you authorized to legally work in the U.S.?
+            </label>
+            <br />
+            <div class="input">
+              <i class="ri-flag-fill q-mr-md icon-enroll"></i>
 
-              <div class="input">
-                <i class="ri-apps-fill q-mr-md icon-enroll"></i>
-
-                <select name="representation" v-model="representation" id="">
-                  <option value="native american">
-                    American Indian or Alaskan Native
-                  </option>
-
-                  <option value="black">Black (not of Hispanic origin)</option>
-                  <option value="hispanic">
-                    Hispanic (Including persons of Mexican, Puerto RIcan, Cuban,
-                    and Central or South American origin
-                  </option>
-                  <option value="pacific islander">Pacific Islander</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <span
-                v-if="inputErr === 'Missing Fields! Representation is required'"
-                class="error"
-                >{{ inputErr }}</span
-              >
+              <select name="can_work_in_usa" v-model="can_work_in_usa" id="">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
             </div>
+
+            <span
+              v-if="
+                inputErr ===
+                'Missing Fields! Please choose if you can work in USA'
+              "
+              class="error"
+              >{{ inputErr }}</span
+            >
+          </div>
             
           </div>
 
