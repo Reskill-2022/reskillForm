@@ -578,7 +578,7 @@
               <span
                 v-if="
                   inputErr ===
-                  'Missing Fields! Please choose Hours available Per Week'
+                  'Missing Fields! Please choose years of professional experience'
                 "
                 class="error"
                 >{{ inputErr }}</span
