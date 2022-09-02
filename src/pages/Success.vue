@@ -530,6 +530,18 @@ The Reskill Americans team
 
 
   }
+  .header-text{
+    font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 122%;
+  /* identical to box height, or 65px */
+
+  letter-spacing: 0.3px;
+
+  color: #121928;
+  }
   }
   @media (max-width: 350px) {
     .input-wrap .input {
@@ -545,5 +557,6 @@ The Reskill Americans team
     height: 73px;
     align-items: center;
   }
+  
   }
   </style>
