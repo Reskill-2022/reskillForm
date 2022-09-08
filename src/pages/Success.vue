@@ -21,7 +21,7 @@
 If you don’t receive an email from us within 24 hours, please email us at <a href="mailto:info@reskillamericans.org">info@reskillamericans.org</a>
 <br/>
 <br />
-We look forward to helping you on our journey towards accessing a career in tech!
+We look forward to helping you on your journey towards accessing a career in tech! 
 <br/>
 <br/>
 
